@@ -11,6 +11,8 @@ import {
 import './App.css';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import Mail from './Mail';
+import EmailList from './EmailList';
 
 function App() {
   return (
@@ -22,7 +24,13 @@ function App() {
           <Sidebar />
 
           <Switch>
+            <Route path="/">
+              <EmailList />
+            </Route>
 
+            <Route path="/mail">
+              <Mail />
+            </Route>
           </Switch>
         </div>
 
