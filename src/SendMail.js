@@ -8,6 +8,8 @@ import React from 'react'
 import {
   useForm
 } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { closeSendMessage } from './features/mailSlice'
 import './SendMail.css'
 
 function SendMail() {
@@ -17,18 +19,23 @@ function SendMail() {
     console.table(data)
   }
 
+  const dispatch = useDispatch();
+
   return (
     <div className="sendMail">
       <div className="sendMail__header">
         <h3>New Messsage</h3>
-        <Close className="sendMail__close" />
+        <Close
+          onClick={() => dispatch(closeSendMessage())}
+          className="sendMail__close"
+        />
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           name="to"
           placeholder="To"
-          type="text"
+          type="email"
           ref={register({ required: true })}
         />
         {errors.to && <p className="sendMail__error">To is Required!</p>}
