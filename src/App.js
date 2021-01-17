@@ -24,12 +24,12 @@ function App() {
           <Sidebar />
 
           <Switch>
-            <Route path="/">
-              <EmailList />
-            </Route>
-
             <Route path="/mail">
               <Mail />
+            </Route>
+
+            <Route path="/">
+              <EmailList />
             </Route>
           </Switch>
         </div>
