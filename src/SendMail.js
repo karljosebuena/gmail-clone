@@ -1,25 +1,30 @@
-import {
-  Button
-} from '@material-ui/core'
-import {
-  Close
-} from '@material-ui/icons'
+import { Button } from '@material-ui/core'
+import { Close } from '@material-ui/icons'
 import React from 'react'
-import {
-  useForm
-} from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { closeSendMessage } from './features/mailSlice'
+import { db } from './firebase'
+import firebase from 'firebase'
 import './SendMail.css'
 
 function SendMail() {
   const { register, handleSubmit, watch, errors } = useForm();
 
-  const onSubmit = (data) => {
-    console.table(data)
-  }
-
   const dispatch = useDispatch();
+
+  const onSubmit = (formData) => {
+    console.log(formData)
+    const { to, subject, message } = formData;
+    db.collection('emails').add({
+      to,
+      subject,
+      message,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+
+    dispatch(closeSendMessage());
+  };
 
   return (
     <div className="sendMail">
