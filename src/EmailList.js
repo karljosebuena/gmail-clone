@@ -28,7 +28,6 @@ function EmailList() {
         id: doc.id,
         data: doc.data(),
       }))));
-    // console.log(emails);
   }, []);
 
   return (
@@ -79,9 +78,6 @@ function EmailList() {
             time={new Date(timestamp?.seconds * 1000).toUTCString()}
           />
         ))}
-
-        <EmailRow title="Twitch" subject="Hey fellow streamer!!!" description="This is a test" time="9:38AM" />
-        <EmailRow title="Twitch" subject="Hey fellow streamer!!!" description="This is a testto get to see ellipsis if it's actually working" time="9:38AM" />
       </div>
     </div>
   )

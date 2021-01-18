@@ -14,7 +14,6 @@ function SendMail() {
   const dispatch = useDispatch();
 
   const onSubmit = (formData) => {
-    console.log(formData)
     const { to, subject, message } = formData;
     db.collection('emails').add({
       to,
